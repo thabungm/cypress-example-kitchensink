@@ -40,8 +40,8 @@
 // }
 
 pipeline {
+  
   agent {
-    label 'docker' 
     
     // this image provides everything needed to run Cypress
     docker {
