@@ -61,7 +61,7 @@ pipeline {
           }
         }
 
-        stage('tester B') {
+        stage('tester C') {
           steps {
             echo "Running build ${env.BUILD_ID}"
             sh "npm run e2e:record:parallel"
