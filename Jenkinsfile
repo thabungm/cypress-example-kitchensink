@@ -1,4 +1,5 @@
-pipeline {
+node {
+  pipeline {
   agent {
     // this image provides everything needed to run Cypress
     docker {
@@ -71,4 +72,5 @@ pipeline {
       sh 'pkill -f http-server'
     }
   }
+}
 }
