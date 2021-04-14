@@ -2,7 +2,7 @@ pipeline {
   agent {
     // this image provides everything needed to run Cypress
     docker {
-      image 'cypress/base:10'
+      image 'cypress/browsers:node14.16.0-chrome89-ff77'
       args '-u root:root'
     }
   }
@@ -49,7 +49,7 @@ pipeline {
         stage('tester A') {
           steps {
             echo "Running build ${env.BUILD_ID}"
-            sh "npm run e2e:record:parallel"
+            sh "npm run e2e:record:parallel:chrome"
           }
         }
 
@@ -57,16 +57,16 @@ pipeline {
         stage('tester B') {
           steps {
             echo "Running build ${env.BUILD_ID}"
-            sh "npm run e2e:record:parallel"
+            sh "npm run e2e:record:parallel:firefox"
           }
         }
 
-        stage('tester C') {
-          steps {
-            echo "Running build ${env.BUILD_ID}"
-            sh "npm run e2e:record:parallel"
-          }
-        }
+        // stage('tester C') {
+        //   steps {
+        //     echo "Running build ${env.BUILD_ID}"
+        //     sh "npm run e2e:record:parallel"
+        //   }
+        // }
       }
 
     }
