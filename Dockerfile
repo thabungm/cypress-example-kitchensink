@@ -20,7 +20,12 @@ ENV CI=1
 
 # install NPM dependencies and Cypress binary
 RUN npm ci
+# RUN npm start
+#CMD [ "npm", "start" ]
+
 # check if the binary was installed successfully
 RUN $(npm bin)/cypress verify
+# build the image
+# RUN $(npm bin)/cypress run
 # npm run e2e:record:parallel
-# CMD [ "npm", "run e2e:record:parallel" ]
+CMD [ "npm", "run e2e:record:parallel" ]
